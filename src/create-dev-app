@@ -1,0 +1,12 @@
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    exit 1
+fi
+file=$1
+echo ${file}
+#exit 1
+
+mkdir $1
+cp -r ../../sample/src ./${file}/
+cp -r ../../sample/public ./${file}/
+sed -i ''  "s/import App1 from .*/import App1 from \".\/${file}\/src\/App\"/g" App.js
